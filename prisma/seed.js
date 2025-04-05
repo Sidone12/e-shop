@@ -7,7 +7,7 @@ const products = await $fetch(productsURL);
 
 const seedProducts = async () => {
   try {
-    products.forEach(async product => {
+    for (const product of products) {
       await prisma.products.create({
         data: {
           title: product.title,
@@ -17,7 +17,7 @@ const seedProducts = async () => {
           price: product.price,
         },
       });
-    });
+    }
   } catch (error) {
     console.error(error);
   } finally {
